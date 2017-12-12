@@ -1,0 +1,66 @@
+<div class="container">
+  <nav class="navbar navbar-toggleable-md navbar-light bg-faded"><button class="btn" data-toggle="modal" data-target="#add">เพิ่ม</button></nav>
+    <table class = "table">
+      <thead>
+        <tr>
+          <th>ลำดับ</th>
+          <th>ชื่อ</th>
+          <th>ประเทศ</th>
+          <th>detail</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let d of data;let i = index">
+          <td>{{i+1}}</td>
+          <td>{{d.name}}</td>
+          <td>{{d.country}}</td>
+          <td>{{d.detail}}</td>
+          <td><button class="btn" data-toggle="modal" data-target="#update" (click)="updateid(d.name,d.country,d.detail,d.id)">แก้ไข</button><button class="btn" (click)="delete(d.id)">ลบ</button></td>
+        </tr>
+      </tbody>
+    </table>
+</div>
+
+<div class="modal fade" id="add">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">เพิ่ม</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          ชื่อ <input [(ngModel)]="name" type="text">
+          ประเทศ <input [(ngModel)]="country" type="text">
+          detail <textarea [(ngModel)]="detail" type="text"></textarea>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" (click)="add()" data-dismiss="modal">Save changes</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="update">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">แก้ไข</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          ชื่อ <input [(ngModel)]="nameupdate" type="text">
+          ประเทศ <input [(ngModel)]="countryupdate" type="text">
+          detail <textarea [(ngModel)]="detailupdate" type="text"></textarea>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" (click)="update()" data-dismiss="modal">Save changes</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
